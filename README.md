@@ -173,13 +173,6 @@ python demo_chessbot.py
 - **Pillow**: Manipulación de imágenes
 - **matplotlib**: Visualizaciones
 
-## 📈 Rendimiento
-
-- **Precisión**: >99.9% en piezas individuales
-- **Velocidad**: ~100-200ms por imagen (CPU)
-- **Soporte**: Tableros físicos y virtuales
-- **Perspectivas**: Múltiples ángulos y perspectivas
-
 ## 🤝 Créditos
 
 Basado en el proyecto original [tensorflow_chessbot](https://github.com/Elucidation/tensorflow_chessbot) de Elucidation.
