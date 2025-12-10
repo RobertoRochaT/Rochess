@@ -1,0 +1,6 @@
+beautifulsoup4>=4.6.3
+lxml>=4.2.4
+Pillow>=8.0.0
+tensorflow>=2.13.0
+requests>=2.21.0
+numpy>=1.21.0

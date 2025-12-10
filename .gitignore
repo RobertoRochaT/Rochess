@@ -1,0 +1,64 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv
+
+# TensorFlow
+*.pb
+*.ckpt
+*.ckpt.data-*
+*.ckpt.index
+*.ckpt.meta
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Results and outputs
+resultados_chessbot/*.html
+resultados_chessbot/*.json
+resultados_chessbot/*.svg
+resultados_chessbot/*.png
+resultados_chessbot/*.jpg
+
+# Test files
+test_output/
+temp_*.png
+temp_*.svg
+
+# Logs
+*.log
+logs/
+
+# API keys and secrets
+.env
+*.key
+secrets.json
+
+# Large model files (if not using Git LFS)
+# tensorflow_chessbot/saved_models/*.pb
+# Uncomment the line above if models are too large
+
+# Temporary files
+*.tmp
+tmp/
+temp/
