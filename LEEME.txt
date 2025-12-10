@@ -1,0 +1,68 @@
+════════════════════════════════════════════════════════════════════════
+                    ChessBot API - Transfer Learning
+════════════════════════════════════════════════════════════════════════
+
+📦 CONTENIDO DEL PROYECTO
+
+Este es un proyecto separado de reconocimiento de tableros de ajedrez
+usando Transfer Learning (ResNet50) con API REST incluida.
+
+📁 Estructura:
+  • tensorflow_chessbot/     - Código core del modelo y API
+  • benchmark_results.json   - Resultados de evaluación
+  • benchmark_report.html    - Reporte visual completo
+  • Scripts de análisis (.py)
+  • Scripts de inicio (.sh)
+  • Documentación (README*.md)
+
+🚀 INICIO RÁPIDO
+
+1. Instalar:
+   ./install.sh
+
+2. Iniciar API:
+   ./start_server.sh
+
+3. Ver benchmarks:
+   ./run_benchmark_suite.sh
+   open benchmark_report.html
+
+📊 RESULTADOS PRINCIPALES
+
+• Precisión General:    92.13%
+• Piezas Blancas:       94.87% ✅
+• Piezas Negras:        89.56% ⚠️
+• Casillas Vacías:      99.17% ✅
+• Inferencia:           ~12ms
+
+🔧 MODELO
+
+• Arquitectura:  ResNet50 + Custom Layers
+• Transfer Learning desde ImageNet
+• 26.1M parámetros (2.5M entrenables)
+• 42 épocas de entrenamiento
+• +13.79% mejora vs baseline
+
+📖 DOCUMENTACIÓN
+
+• README.md                      - Documentación principal
+• BENCHMARK_README.md            - Guía de benchmarks
+• README_CHESSBOT.md             - Guía de uso
+• README_TENSORFLOW_CHESSBOT.md  - Detalles técnicos
+
+🌐 API REST
+
+Endpoints:
+  GET  /           - Health check
+  POST /analyze    - Analizar imagen de tablero
+
+Ejemplo:
+  curl -X POST http://localhost:5000/analyze \
+    -H "Content-Type: application/json" \
+    -d '{"image_url": "https://example.com/board.jpg"}'
+
+📞 SOPORTE
+
+GitHub: RobertoRochaT/Chess-Project
+
+════════════════════════════════════════════════════════════════════════

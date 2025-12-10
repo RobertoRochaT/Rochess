@@ -33,13 +33,6 @@ ENV/
 *~
 .DS_Store
 
-# Results and outputs
-resultados_chessbot/*.html
-resultados_chessbot/*.json
-resultados_chessbot/*.svg
-resultados_chessbot/*.png
-resultados_chessbot/*.jpg
-
 # Test files
 test_output/
 temp_*.png

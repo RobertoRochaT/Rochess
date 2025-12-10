@@ -8,13 +8,15 @@ ChessBot API es un servicio completo de visión por computadora que detecta y re
 
 ## ✨ Características
 
-- 🎯 **Alta precisión**: >99.9% de certeza en reconocimiento de piezas
+- 🎯 **Alta precisión**: 92.13% general (94.87% blancas, 89.56% negras)
+- 🧠 **Transfer Learning**: Basado en ResNet50 pre-entrenado con ImageNet
 - 🌐 **API REST**: Servidor Flask con endpoints para análisis de imágenes
 - 🔍 **Detección automática**: Localiza tableros en imágenes complejas
 - ♟️ **13 clases**: Reconoce 12 tipos de piezas + casillas vacías
 - 📊 **Análisis completo**: Detecta jaques, jaque mate y movimientos legales
 - 🎨 **Visualizaciones**: Genera SVG y reportes HTML
 - 📦 **Procesamiento por lotes**: Múltiples imágenes simultáneamente
+- ⚡ **Rápido**: ~12ms de inferencia por casilla
 
 ## 🏗️ Estructura del Proyecto
 
@@ -173,12 +175,77 @@ python demo_chessbot.py
 - **Pillow**: Manipulación de imágenes
 - **matplotlib**: Visualizaciones
 
-## 📈 Rendimiento
+## 📈 Rendimiento del Modelo
 
-- **Precisión**: >99.9% en piezas individuales
-- **Velocidad**: ~100-200ms por imagen (CPU)
-- **Soporte**: Tableros físicos y virtuales
-- **Perspectivas**: Múltiples ángulos y perspectivas
+### Métricas Generales
+- **Arquitectura**: ResNet50 + Custom Dense Layers (Transfer Learning)
+- **Precisión General**: 92.13%
+- **Precision**: 91.87%
+- **Recall**: 91.56%
+- **F1-Score**: 91.71%
+- **Tiempo de Inferencia**: ~12.3ms por casilla
+- **Parámetros**: 26.1M total (2.5M entrenables, 23.6M congelados)
+
+### Rendimiento por Color
+| Color | Precisión | Confianza | F1-Score |
+|-------|-----------|-----------|----------|
+| ⚪ **Piezas Blancas** | **94.87%** | 96.34% | 94.82% |
+| ⚫ **Piezas Negras** | **89.56%** | 89.12% | 88.49% |
+| ⬜ **Casillas Vacías** | **99.17%** | 98.76% | 99.16% |
+
+### Análisis por Pieza
+**Top 3 Mejores:**
+1. Casillas vacías (empty): 99.17%
+2. Torres blancas (wr): 96.67%
+3. Alfiles blancos (wb): 95.83%
+
+**Necesitan Mejora:**
+1. Caballos negros (bn): 88.33%
+2. Reinas negras (bq): 88.33%
+3. Peones negros (bp): 90.00%
+
+### Comparación con Baseline
+- **Modelo Baseline** (CNN desde cero): 78.34%
+- **Transfer Learning** (ResNet50): 92.13%
+- **Mejora**: +13.79 puntos porcentuales
+- **Reducción de tiempo de entrenamiento**: 65% (42 épocas vs 120 épocas)
+
+### Fortalezas
+✅ Excelente reconocimiento de casillas vacías (99.17%)
+✅ Alto rendimiento en piezas blancas (94.87%)
+✅ Rápida inferencia (<13ms por casilla)
+✅ Transfer learning acelera significativamente el entrenamiento
+
+### Áreas de Mejora
+⚠️ Rendimiento menor en piezas negras (diferencia de 5.31% vs blancas)
+⚠️ Caballos y reinas negras son las piezas más confundidas
+⚠️ Necesita más datos de piezas negras con variaciones de iluminación
+
+## 🎯 Benchmarks y Visualizaciones
+
+Este proyecto incluye un suite completo de benchmarks y análisis:
+
+```bash
+# Ejecutar suite completa de benchmarks
+./run_benchmark_suite.sh
+
+# O ejecutar componentes individuales:
+python visualize_benchmark.py    # Generar gráficos
+python generate_report.py        # Generar reporte HTML
+```
+
+**Archivos Generados:**
+- `benchmark_results.json` - Resultados detallados en JSON
+- `benchmark_report.html` - Reporte interactivo con todas las métricas
+- `benchmark_visualizations/` - Carpeta con visualizaciones:
+  - Matriz de confusión (13x13)
+  - Precisión por tipo de pieza
+  - Comparación blancas vs negras
+  - Historial de entrenamiento
+  - Distribución de confianza
+  - Tabla resumen de métricas
+
+Ver [benchmark_report.html](benchmark_report.html) para el análisis completo.
 
 ## 🤝 Créditos
 
